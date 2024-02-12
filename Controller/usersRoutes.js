@@ -63,7 +63,12 @@ usersRouter.put("/users/forgot", async (req, res) => {
     const randomString =
       Math.random().toString(36).substring(2, 15) +
       Math.random().toString(36).substring(2, 15);
-    const link = `http://localhost:3000/users/reset/?randomString=${randomString}`;
+      // const resetLink ="http://localhost:3000/users/reset/"
+  const link = `http://localhost:3000/users/reset/${randomString}`;
+ // const link = `http://localhost:3000/users/reset/?randomString=${randomString}`;
+
+ 
+
 
     USER.resetToken = randomString;
     await User.findByIdAndUpdate(USER.id, USER);
